@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://helloworld.ws.tieto.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://helloworld.ws.tieto.com" xmlns:intf="http://helloworld.ws.tieto.com" xmlns:tns1="http://bean.ws.tieto.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://helloworld.ws.tieto.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.ws.tieto.com"/>
+   <element name="queryUser">
+    <complexType/>
+   </element>
+   <element name="queryUserResponse">
+    <complexType>
+     <sequence>
+      <element name="queryUserReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.ws.tieto.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="User">
+    <sequence>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="gender" nillable="true" type="xsd:boolean"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="queryUserRequest">
+
+      <wsdl:part element="impl:queryUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryUserResponse">
+
+      <wsdl:part element="impl:queryUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ComplexWebService">
+
+      <wsdl:operation name="queryUser">
+
+         <wsdl:input message="impl:queryUserRequest" name="queryUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:queryUserResponse" name="queryUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ComplexWebServiceSoapBinding" type="impl:ComplexWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="queryUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ComplexWebServiceService">
+
+      <wsdl:port binding="impl:ComplexWebServiceSoapBinding" name="ComplexWebService">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceServer/services/ComplexWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
