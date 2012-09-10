@@ -58,4 +58,25 @@ public class WebServiceHelper
     }
   }
 
+  public String returnString()
+  {
+    return (String)invokingBlock()[0];
+  }
+
+  public int returnInt()
+  {
+    return (Integer)invokingBlock()[0];
+  }
+
+  public boolean returnBoolean()
+  {
+    return (Boolean)invokingBlock()[0];
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T> T invoke()
+  {
+    return (T)invokingBlock()[0];
+  }
+
 }

@@ -10,10 +10,10 @@ public class ComplexWebServiceTest extends TestCase
 
   public void testQueryUser()
   {
-    Object[] obj = WebServiceHelper.newInstance()
+    User user = WebServiceHelper.newInstance()
         .setTarget("http://localhost:8080/WebServiceServer/services/ComplexWebService")
         .createQname("http://helloworld.ws.tieto.com", "queryUser")
-        .setArgAndReturnType(new Object[] {}, new Class< ? >[] { User.class }).invokingBlock();
-    System.out.println(obj[0]);
+        .setArgAndReturnType(new Object[] {}, new Class< ? >[] { User.class }).invoke();
+    System.out.println(user);
   }
 }
