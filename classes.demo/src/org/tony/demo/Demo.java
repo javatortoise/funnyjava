@@ -8,9 +8,7 @@ public class Demo
 {
   public static void main(String[] args) throws IOException
   {
-    File file = new File("classes/Right.class");
-    ParseClassFile p = new ParseClassFile(new FileInputStream(file));
+    ParseClassFile p = new ParseClassFile(new FileInputStream(new File("classes/Right.class")));
     p.parse();
   }
-
 }
