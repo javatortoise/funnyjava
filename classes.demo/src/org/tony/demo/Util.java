@@ -26,4 +26,27 @@ public class Util
     return Integer.parseInt(byteArraytoHexString(array), 16);
   }
 
+  public static String byteArrToHexStringWithFill(byte[] bytes)
+  {
+    if (bytes.length == 0)
+    {
+      return "";
+    }
+    StringBuilder hexStr = new StringBuilder("0x ");
+    for (byte temp : bytes)
+    {
+      if (temp == 0)
+      {
+        hexStr.append("00 ");
+        continue;
+      }
+      String str = Integer.toHexString(byteToHex(temp));
+      if (str.length() == 1)
+      {
+        str = "0" + str;
+      }
+      hexStr.append(str.toUpperCase() + " ");
+    }
+    return hexStr.toString();
+  }
 }
